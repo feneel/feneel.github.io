@@ -23,7 +23,7 @@ export default function Footer() {
             <FaGithub size={20} />
           </a>
           <a
-            href="https://linkedin.com/in/feneel"
+            href="https://www.linkedin.com/in/feneeldoshi/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white mx-3"
