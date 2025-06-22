@@ -2,12 +2,11 @@ import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer>
-      <div className="container d-flex flex-column flex-md-row justify-content-between align-items-center">
-        <p className="mb-2 mb-md-0">© {new Date().getFullYear()} Feneel Doshi. All rights reserved.</p>
+        <footer className="bg-dark text-white text-center py-3">
+        <p className="mb-2">© {new Date().getFullYear()} Feneel Doshi. All rights reserved.</p>
         <div>
           <a
-            href="mailto:youremail@example.com"
+            href="mailto:feneeldoshi@gmail.com"
             className="text-white mx-3"
             aria-label="Email"
           >
@@ -31,7 +30,6 @@ export default function Footer() {
           >
             <FaLinkedin size={20} />
           </a>
-        </div>
       </div>
     </footer>
   );
