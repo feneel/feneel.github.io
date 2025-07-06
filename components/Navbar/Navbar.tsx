@@ -1,5 +1,4 @@
-"use client";
-
+import styles from "./Navbar.module.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -19,9 +18,11 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <nav
+      className={`navbar navbar-expand-lg shadow-sm sticky-top ${styles.navbar}`}
+    >
       <div className="container">
-        <Link href="/" className="navbar-brand fw-bold text-primary">
+        <Link href="/" className={`navbar-brand fw-bold ${styles.brand}`}>
           Feneel Doshi
         </Link>
         <button
@@ -39,8 +40,8 @@ export default function Navbar() {
               <li key={href} className="nav-item">
                 <Link
                   href={href}
-                  className={`nav-link ${
-                    pathname === href ? "active fw-bold text-primary" : ""
+                  className={`nav-link ${styles.navLink} ${
+                    pathname === href ? styles.active : ""
                   }`}
                   onClick={() => setIsOpen(false)}
                 >
