@@ -1,4 +1,4 @@
-import SkillsList from "../../components/SkillsList";
+import SkillsList from "@/components/SkillsList/SkillsList";
 import { skillsData } from "../data/data";
 
 
