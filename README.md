@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Personal Portfolio Website
+
+This is my personal portfolio website built using **Next.js** and **React**, showcasing my projects, experience, and skills with modern design, animations, and interactive UI elements.
+
+## Features
+
+* Clean Next.js app structure for fast server-side rendering and client-side routing
+* Responsive and accessible design with CSS Modules
+* Scroll animations powered by [AOS (Animate On Scroll)](https://michalsnik.github.io/aos/)
+* Animated typewriter effect using [react-simple-typewriter](https://github.com/azz/react-simple-typewriter)
+* Iconography from [React Icons](https://react-icons.github.io/react-icons/)
+* Bootstrap classes used for consistent styling and layout
+* Hosted on **GitHub Pages** for easy and reliable deployment
+
+## Technologies Used
+
+* Next.js
+* React
+* TypeScript
+* CSS Modules
+* AOS (Animate On Scroll)
+* Bootstrap
+* React Icons
+* react-simple-typewriter
+* GitHub Pages
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+Make sure you have [Node.js](https://nodejs.org/en/) installed (v16 or later recommended).
+
+### Installation
+
+1. Clone the repo:
+
+   ```bash
+   git clone https://github.com/feneel/portfolio.git
+   cd portfolio
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+   Open [http://localhost:3000](http://localhost:3000) to view the site locally.
+
+### Build and Deploy
+
+To build the static site for deployment:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm run export
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This will generate an `out` directory with static files you can deploy on GitHub Pages or any static host.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Personal Note
 
-## Learn More
+> **PS:** I built this portfolio to learn Next.js and gain hands-on experience with server-side rendering, routing, and React integration. It’s been an exciting learning journey — stay tuned for more updates!
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Note to Developers
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is open for contributions and improvements! If you'd like to suggest features, fix bugs, or enhance the portfolio, please feel free to open an issue or submit a pull request.
 
-## Deploy on Vercel
+**Tech Stack:** Next.js, React, TypeScript, CSS Modules, and more (see above).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Before contributing, please ensure your code follows the existing style and conventions for consistency.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+License & Copyright
+© 2025 Feneel Doshi. All rights reserved.
+
+Feel free to use and adapt this code for learning or personal projects. If you find it helpful, please give credit by linking back to this repository. 
