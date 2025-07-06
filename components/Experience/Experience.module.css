@@ -1,0 +1,25 @@
+/* Experience.module.css */
+
+.experienceSection {
+  background-color: var(--bg-light);
+  padding: 3rem 0;
+}
+
+.experienceCard {
+  border-left: 4px solid var(--accent);
+  background: white;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.title {
+  color: var(--strong);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.subtitle {
+  color: var(--primary);
+  font-weight: 500;
+}

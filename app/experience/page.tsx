@@ -1,4 +1,4 @@
-import ExperienceCard from "@/components/ExperienceCard";
+import ExperienceCard from "@/components/Experience/ExperienceCard";
 import { experienceData } from "../data/data";
 
 export default function Experience() {
