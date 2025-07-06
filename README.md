@@ -35,7 +35,7 @@ Make sure you have [Node.js](https://nodejs.org/en/) installed (v16 or later rec
 1. Clone the repo:
 
    ```bash
-   git clone https://github.com/feneel/feneel-portfolio.git
+   git clone https://github.com/feneel/feneel-portfolio.git](https://github.com/feneel/feneel.github.io.git
    cd portfolio
    ```
 
