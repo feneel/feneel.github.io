@@ -1,0 +1,29 @@
+.category {
+  margin-bottom: 2rem;
+}
+
+.heading {
+  color: var(--strong);
+  margin-bottom: 0.5rem;
+}
+
+.skillsContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.skillBadge {
+  background-color: white;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  padding: 0.5rem 1rem;
+  margin: 0.25rem;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.skillBadge:hover {
+  background-color: var(--accent);
+  color: white;
+}
