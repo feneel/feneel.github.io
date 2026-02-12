@@ -59,6 +59,33 @@ export const experienceData = [
 ];
 
 export const projectsData = [
+
+  {
+    title: "Master Outline (TOC Editor) — Vivpro AI Hackathon",
+    description:
+      "Full-stack TOC editor with tree rendering, drag/drop reorder, CRUD operations, and JSON import; built for Vivpro AI’s first hackathon.",
+    tech: ["React", "Vite", "TypeScript", "FastAPI", "PostgreSQL"],
+    github: "https://github.com/feneel/master-outline",
+  },
+
+  {
+    title: "Wand KB — AI Knowledge Base (TXT)",
+    description:
+      "Built a lightweight RAG app for uploading .txt files and getting LLM answers with citations, completeness scoring, and enrichment suggestions.",
+    tech: ["Next.js", "TypeScript", "Tailwind", "Firestore Vector Search", "OpenAI"],
+    github: "https://github.com/feneel/wand-kb",
+  },
+
+
+
+  {
+    title: "SWOT Explorer",
+    description:
+      "Full-stack SWOT analysis app with a responsive Next.js frontend and a FastAPI backend serving data via REST APIs.",
+    tech: ["Next.js", "React", "Tailwind", "FastAPI", "REST APIs"],
+    github: "https://github.com/feneel/swot-explorer-main",
+  },
+
   {
     title: "Data Audit Module",
     description:
@@ -118,6 +145,7 @@ export const projectsData = [
     github: "https://github.com/feneel/Fraud-Detection-System",
   },
 ];
+
 
 export const skillsData = {
   Languages: [
