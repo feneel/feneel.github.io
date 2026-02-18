@@ -18,21 +18,21 @@ export default function Navbar() {
   ];
 
   return (
-    <nav
-      className={`navbar navbar-expand-lg shadow-sm sticky-top ${styles.navbar}`}
-    >
+    <nav className={`navbar navbar-expand-lg sticky-top ${styles.navbar}`}>
       <div className="container">
         <Link href="/" className={`navbar-brand fw-bold ${styles.brand}`}>
           Feneel Doshi
         </Link>
         <button
-          className="navbar-toggler"
+          className={`navbar-toggler ${styles.toggler}`}
           type="button"
           onClick={toggle}
           aria-expanded={isOpen}
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon" />
+          <span className={styles.togglerLine} />
+          <span className={styles.togglerLine} />
+          <span className={styles.togglerLine} />
         </button>
         <div className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}>
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
