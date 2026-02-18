@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import AOS from 'aos'
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
+import { ThemeProvider } from '@/components/ThemeProvider/ThemeProvider';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
@@ -15,9 +16,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        <main className="flex-grow-1">{children}</main>
-        <Footer />
+        <ThemeProvider>
+          <Navbar />
+          <main className="flex-grow-1">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
