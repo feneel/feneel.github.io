@@ -1,13 +1,247 @@
 "use client";
 
-import { projectsData } from "./data/data";
+import { FormEvent, KeyboardEvent, useMemo, useRef, useState } from "react";
+import { aboutText, projectsData, skillsData } from "./data/data";
 import styles from "./page.module.css";
+import { useTheme } from "@/components/ThemeProvider/ThemeProvider";
 
 export default function Home() {
   const featuredProjects = projectsData.slice(0, 3);
+  const { devMode } = useTheme();
+  const [command, setCommand] = useState("");
+  const [history, setHistory] = useState<string[]>([
+    "Welcome to Feneel OS terminal. Type `help` to get started.",
+  ]);
+  const [commandHistory, setCommandHistory] = useState<string[]>([]);
+  const [historyIndex, setHistoryIndex] = useState<number>(-1);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const topSkills = useMemo(
+    () => [
+      ...skillsData.Languages.slice(0, 4),
+      ...skillsData.Frameworks.slice(0, 4),
+      ...skillsData.Tools.slice(0, 4),
+    ].join(", "),
+    []
+  );
+
+  const commandSuggestions = [
+    { label: "Show commands", command: "help" },
+    { label: "List projects", command: "list projects" },
+    { label: "Search AI projects", command: "search ai" },
+    { label: "Open projects page", command: "open projects" },
+    { label: "Show socials", command: "social" },
+    { label: "Clear terminal", command: "clear" },
+  ];
+
+  const runCommand = (input: string) => {
+    const value = input.trim().toLowerCase();
+    if (!value) return;
+
+    if (value === "clear") {
+      setHistory([]);
+      return;
+    }
+
+    let output = "Bad command. Type `help`.";
+    if (value === "help") {
+      output =
+        "Commands: help, ls, whoami, pwd, date, about, list projects|skills|experience, project <n>, search <term>, open about|projects|experience|skills|contact, social, history, clear";
+    } else if (value === "ls") {
+      output = "about.txt  projects/  skills.txt  experience.log  contact.card";
+    } else if (value === "whoami") {
+      output = "feneel :: full-stack engineer";
+    } else if (value === "pwd") {
+      output = "C:\\FENEEL\\PORTFOLIO";
+    } else if (value === "date") {
+      output = new Date().toLocaleString();
+    } else if (value === "about") {
+      output = aboutText.trim().split("\n")[0];
+    } else if (value === "list projects" || value === "projects") {
+      output = projectsData
+        .slice(0, 5)
+        .map((project, index) => `${index + 1}. ${project.title}`)
+        .join("\n");
+    } else if (value === "list skills" || value === "skills") {
+      output = topSkills;
+    } else if (value === "list experience") {
+      output = "Use `open experience` to view complete work history.";
+    } else if (value.startsWith("project ")) {
+      const projectNumber = Number(value.replace("project ", "").trim());
+      const selected = Number.isInteger(projectNumber)
+        ? projectsData[projectNumber - 1]
+        : undefined;
+      output = selected
+        ? `${selected.title}\n${selected.description}\nStack: ${selected.tech.join(
+            ", "
+          )}${selected.github ? `\nGitHub: ${selected.github}` : ""}`
+        : "Project not found. Try `project 1`.";
+    } else if (value === "contact") {
+      output =
+        "Email: feneeldoshi@gmail.com | LinkedIn: linkedin.com/in/feneeldoshi | GitHub: github.com/feneel";
+    } else if (value === "social") {
+      output =
+        "Email: mailto:feneeldoshi@gmail.com\nGitHub: https://github.com/feneel\nLinkedIn: https://linkedin.com/in/feneeldoshi";
+    } else if (value === "resume") {
+      output = "Use the Experience page for role history and impact highlights.";
+    } else if (value === "history") {
+      output = commandHistory.length
+        ? commandHistory.map((item, index) => `${index + 1}. ${item}`).join("\n")
+        : "No command history yet.";
+    } else if (value.startsWith("search ")) {
+      const query = value.replace("search ", "").trim();
+      const results = projectsData
+        .filter(
+          (project) =>
+            project.title.toLowerCase().includes(query) ||
+            project.description.toLowerCase().includes(query) ||
+            project.tech.some((tech) => tech.toLowerCase().includes(query))
+        )
+        .slice(0, 5)
+        .map((project, index) => `${index + 1}. ${project.title}`);
+
+      output = results.length
+        ? `Results for "${query}":\n${results.join("\n")}`
+        : `No results found for "${query}".`;
+    } else if (value.startsWith("open ")) {
+      const route = value.replace("open ", "").trim();
+      const routeMap: Record<string, string> = {
+        about: "/about",
+        projects: "/projects",
+        experience: "/experience",
+        skills: "/skills",
+        contact: "/contact",
+      };
+      if (routeMap[route]) {
+        output = `Opening ${routeMap[route]} ...`;
+        if (typeof window !== "undefined") {
+          window.location.href = routeMap[route];
+        }
+      }
+    }
+
+    setCommandHistory((current) => [...current, input]);
+    setHistory((current) => [...current, `$ ${input}`, output]);
+    setHistoryIndex(-1);
+  };
+
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const value = command;
+    setCommand("");
+    runCommand(value);
+  };
+
+  const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (!commandHistory.length) return;
+
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+      const nextIndex =
+        historyIndex < commandHistory.length - 1
+          ? historyIndex + 1
+          : commandHistory.length - 1;
+      setHistoryIndex(nextIndex);
+      setCommand(commandHistory[commandHistory.length - 1 - nextIndex]);
+      return;
+    }
+
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      const nextIndex = historyIndex - 1;
+      if (nextIndex < 0) {
+        setHistoryIndex(-1);
+        setCommand("");
+        return;
+      }
+      setHistoryIndex(nextIndex);
+      setCommand(commandHistory[commandHistory.length - 1 - nextIndex]);
+      return;
+    }
+
+    if (event.key === "Tab") {
+      event.preventDefault();
+      const match = commandSuggestions.find((suggestion) =>
+        suggestion.command.startsWith(command.toLowerCase())
+      );
+      if (match) {
+        setCommand(match.command);
+      }
+    }
+  };
+
+  const renderLine = (line: string) => {
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    const parts = line.split(urlRegex);
+    return parts.map((part, index) => {
+      if (part.startsWith("http://") || part.startsWith("https://")) {
+        return (
+          <a
+            key={`${part}-${index}`}
+            href={part}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.terminalLink}
+          >
+            {part}
+          </a>
+        );
+      }
+      return <span key={`${part}-${index}`}>{part}</span>;
+    });
+  };
 
   return (
     <section className={styles.home} data-aos="fade-up">
+      {devMode ? (
+        <div className={`container ${styles.terminalShell}`}>
+          <div className={styles.terminalHeader}>
+            <span className={styles.dot} />
+            <span className={styles.dot} />
+            <span className={styles.dot} />
+            <p>C:\FENEEL&gt;</p>
+          </div>
+          <div
+            className={styles.terminalBody}
+            onClick={() => inputRef.current?.focus()}
+            role="presentation"
+          >
+            {history.map((line, index) => (
+              <p key={`${line}-${index}`}>{renderLine(line)}</p>
+            ))}
+            <p className={styles.terminalHint}>
+              Suggested:
+            </p>
+            <div className={styles.suggestionRow}>
+              {commandSuggestions.map((item) => (
+                <button
+                  key={item.command}
+                  type="button"
+                  className={styles.suggestionChip}
+                  onClick={() => {
+                    setCommand(item.command);
+                    inputRef.current?.focus();
+                  }}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+            <form onSubmit={onSubmit} className={styles.commandForm}>
+              <span>$</span>
+              <input
+                ref={inputRef}
+                value={command}
+                onChange={(event) => setCommand(event.target.value)}
+                onKeyDown={onKeyDown}
+                placeholder="help"
+                aria-label="Terminal command input"
+              />
+            </form>
+          </div>
+        </div>
+      ) : (
+        <>
       <div className={`container ${styles.hero}`}>
         <div>
           <p className={styles.kicker}>FULL-STACK ENGINEER</p>
@@ -43,7 +277,7 @@ export default function Home() {
               <span>Projects</span>
             </div>
             <div>
-              <strong>4+ yrs</strong>
+              <strong>3 yrs</strong>
               <span>Experience</span>
             </div>
           </div>
@@ -83,6 +317,8 @@ export default function Home() {
           </article>
         ))}
       </div>
+        </>
+      )}
     </section>
   );
 }

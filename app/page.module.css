@@ -2,6 +2,103 @@
   padding: 1.2rem 0 2rem;
 }
 
+.terminalShell {
+  border: 1px solid #1f5f1f;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #050805;
+  min-height: 520px;
+}
+
+.terminalHeader {
+  border-bottom: 1px solid #163a16;
+  background: #0b130b;
+  padding: 0.55rem 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #2e852e;
+}
+
+.terminalHeader p {
+  margin: 0 0 0 0.2rem;
+  font-family: var(--font-dev);
+  color: #8fff8f;
+  font-size: 0.8rem;
+}
+
+.terminalBody {
+  padding: 0.9rem;
+  font-family: var(--font-dev);
+  min-height: 450px;
+  cursor: text;
+  line-height: 1.45;
+}
+
+.terminalBody p {
+  margin: 0 0 0.45rem;
+  color: #8fff8f;
+  white-space: pre-wrap;
+}
+
+.terminalHint {
+  margin: 0.5rem 0 0.7rem;
+  color: #63bc63 !important;
+  font-size: 0.78rem;
+}
+
+.suggestionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.suggestionChip {
+  border: 1px solid #1f5f1f;
+  background: #0b150b;
+  color: #91f591;
+  border-radius: 999px;
+  padding: 0.22rem 0.55rem;
+  font-size: 0.74rem;
+  font-family: var(--font-dev);
+}
+
+.suggestionChip:hover {
+  border-color: #2f8f2f;
+  color: #b4ffb4;
+}
+
+.terminalLink {
+  color: #7ce8ff;
+  text-decoration: underline;
+}
+
+.commandForm {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.commandForm span {
+  color: #72ff72;
+}
+
+.commandForm input {
+  flex: 1;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: #9bff9b;
+  font-family: var(--font-dev);
+}
+
 .hero {
   display: grid;
   grid-template-columns: 1.35fr 0.9fr;
