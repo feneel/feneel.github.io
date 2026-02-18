@@ -1,11 +1,14 @@
 import styles from "./Navbar.module.css";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
+import { useTheme } from "../ThemeProvider/ThemeProvider";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const { devMode, setDevMode } = useTheme();
 
   const toggle = () => setIsOpen(!isOpen);
 
@@ -16,6 +19,14 @@ export default function Navbar() {
     { name: "Skills", href: "/skills" },
     // { name: "Contact", href: "/contact" },
   ];
+
+  const toggleDevMode = () => {
+    const next = !devMode;
+    setDevMode(next);
+    if (next) {
+      router.push("/");
+    }
+  };
 
   return (
     <nav className={`navbar navbar-expand-lg sticky-top ${styles.navbar}`}>
@@ -35,21 +46,40 @@ export default function Navbar() {
           <span className={styles.togglerLine} />
         </button>
         <div className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}>
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            {navLinks.map(({ name, href }) => (
-              <li key={href} className="nav-item">
-                <Link
-                  href={href}
-                  className={`nav-link ${styles.navLink} ${
-                    pathname === href ? styles.active : ""
-                  }`}
-                  onClick={() => setIsOpen(false)}
-                >
-                  {name}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          {!devMode && (
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              {navLinks.map(({ name, href }) => (
+                <li key={href} className="nav-item">
+                  <Link
+                    href={href}
+                    className={`nav-link ${styles.navLink} ${
+                      pathname === href ? styles.active : ""
+                    }`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+          <div className={styles.devModeWrap}>
+            {devMode && (
+              <Link href="/" className={styles.terminalLink}>
+                Terminal
+              </Link>
+            )}
+            <span className={styles.devModeLabel}>Dev Mode</span>
+            <button
+              type="button"
+              onClick={toggleDevMode}
+              className={`${styles.devModeToggle} ${
+                devMode ? styles.devModeToggleActive : ""
+              }`}
+            >
+              {devMode ? "ON" : "OFF"}
+            </button>
+          </div>
         </div>
       </div>
     </nav>

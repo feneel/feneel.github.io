@@ -1,5 +1,5 @@
 .footer {
-  background: rgba(10, 19, 35, 0.82);
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
   border-top: 1px solid var(--border);
   color: var(--muted);
   padding: 1.1rem 0;

@@ -1,5 +1,5 @@
 .navbar {
-  background: rgba(10, 19, 35, 0.74);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
@@ -19,13 +19,13 @@
 }
 
 .navLink:hover {
-  background: rgba(83, 214, 255, 0.12);
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
   color: var(--accent) !important;
 }
 
 .active {
   color: var(--primary) !important;
-  background: rgba(83, 214, 255, 0.15);
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
 }
 
 .toggler {
@@ -41,6 +41,50 @@
   width: 18px;
   height: 2px;
   background: var(--primary);
+}
+
+.devModeWrap {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.terminalLink {
+  border: 1px solid var(--border);
+  background: var(--surface-soft);
+  color: var(--primary);
+  border-radius: 8px;
+  padding: 0.3rem 0.6rem;
+  font-family: var(--font-dev);
+  font-size: 0.78rem;
+}
+
+.terminalLink:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.devModeLabel {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-family: var(--font-dev);
+}
+
+.devModeToggle {
+  border: 1px solid var(--border);
+  background: var(--surface-soft);
+  color: var(--muted);
+  border-radius: 8px;
+  padding: 0.3rem 0.6rem;
+  font-family: var(--font-dev);
+  font-size: 0.78rem;
+}
+
+.devModeToggleActive {
+  color: #7cff7c;
+  border-color: #2a7c2a;
+  background: #0d1a0d;
 }
 
 .themeWrap {
