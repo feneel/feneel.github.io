@@ -13,6 +13,18 @@
   --muted: #95acd8;
 }
 
+body[data-dev-mode="true"] {
+  --font-ui: "JetBrains Mono", "IBM Plex Mono", monospace;
+  --bg-light: #030603;
+  --primary: #9bff9b;
+  --accent: #70ff70;
+  --strong: #b5ffb5;
+  --surface: #050a05;
+  --surface-soft: #081108;
+  --border: #1f5f1f;
+  --muted: #66b866;
+}
+
 html,
 body {
   height: 100%;
@@ -28,6 +40,10 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+body[data-dev-mode="true"] {
+  background: #030603;
 }
 
 .layoutWrapper {
