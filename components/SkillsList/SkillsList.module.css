@@ -1,10 +1,10 @@
 .category {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .heading {
-  color: var(--strong);
-  margin-bottom: 0.5rem;
+  color: var(--primary);
+  margin-bottom: 0.6rem;
 }
 
 .skillsContainer {
@@ -13,17 +13,17 @@
 }
 
 .skillBadge {
-  background-color: white;
-  border: 1px solid var(--primary);
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
   color: var(--primary);
-  padding: 0.5rem 1rem;
+  padding: 0.45rem 0.85rem;
   margin: 0.25rem;
   border-radius: 999px;
   font-weight: 600;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s ease;
 }
 
 .skillBadge:hover {
   background-color: var(--accent);
-  color: white;
+  color: #03121f;
 }

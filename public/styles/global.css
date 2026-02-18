@@ -1,8 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
 :root {
-  --bg-light: #f4faff;
-  --primary: #0077b6;
-  --accent: #00b4d8;
-  --strong: #03045e;
+  --font-ui: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-dev: "JetBrains Mono", "IBM Plex Mono", monospace;
+  --bg-light: #08111f;
+  --primary: #d6e4ff;
+  --accent: #57d8ff;
+  --strong: #91ffca;
+  --surface: #0f1b33;
+  --surface-soft: #12213c;
+  --border: #2a3f67;
+  --muted: #95acd8;
 }
 
 html,
@@ -12,9 +20,11 @@ body {
 }
 
 body {
-  background-color: var(--bg-light);
+  background: radial-gradient(circle at 0% 0%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 38%),
+    radial-gradient(circle at 95% 10%, color-mix(in srgb, var(--strong) 14%, transparent), transparent 35%),
+    var(--bg-light);
   color: var(--primary);
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-ui);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -29,7 +39,7 @@ body {
 
 main {
   flex-grow: 1;
-  padding: 1rem 0;
+  padding: 1.15rem 0;
 }
 
 a {
@@ -42,6 +52,32 @@ a:hover {
   color: var(--accent);
 }
 
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+code,
+pre,
+.mono {
+  font-family: var(--font-dev);
+}
+
 .textStrong {
   color: var(--strong);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--primary);
+}
+
+.container h2 {
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
 }

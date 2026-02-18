@@ -26,11 +26,11 @@ export default function ProjectCard({
           ))}
         </div>
         {github ? (
-          <a href={github} className="btn btn-outline-primary" target="_blank">
+          <a href={github} className={styles.repoLink} target="_blank">
             View on GitHub
           </a>
         ) : (
-          <span className="badge bg-secondary">Company Project</span>
+          <span className={styles.companyTag}>Company Project</span>
         )}
       </div>
     </div>

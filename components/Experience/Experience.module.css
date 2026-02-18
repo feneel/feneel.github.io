@@ -1,25 +1,25 @@
-/* Experience.module.css */
-
 .experienceSection {
   background-color: var(--bg-light);
   padding: 3rem 0;
 }
 
 .experienceCard {
-  border-left: 4px solid var(--accent);
-  background: white;
-  padding: 1.2rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-left: 3px solid var(--accent);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1.1rem;
+  margin-bottom: 0.9rem;
+  border-radius: 10px;
 }
 
 .title {
-  color: var(--strong);
-  font-size: 1.2rem;
-  font-weight: 600;
+  color: var(--primary);
+  font-size: 1.08rem;
+  font-weight: 700;
 }
 
-.subtitle {
-  color: var(--primary);
-  font-weight: 500;
+.subtitle,
+.dates,
+.bullets {
+  color: var(--muted);
 }
