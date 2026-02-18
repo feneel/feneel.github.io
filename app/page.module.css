@@ -1,48 +1,174 @@
+.home {
+  padding: 1.2rem 0 2rem;
+}
+
 .hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5rem 1rem;
-  background-color: var(--bg-light);
-  text-align: center;
-  min-height: 60vh;
+  display: grid;
+  grid-template-columns: 1.35fr 0.9fr;
+  gap: 1rem;
+  align-items: stretch;
 }
 
-.textWrapper {
-  max-width: 800px;
+.kicker {
+  color: var(--accent);
+  font-family: "IBM Plex Mono", "Fira Code", monospace;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  margin-bottom: 0.75rem;
 }
 
-.heading {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--primary);
+.title {
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  line-height: 1.12;
+  margin: 0;
+  max-width: 16ch;
 }
 
-.typewriter {
-  color: var(--strong);
-  font-weight: 600;
+.subtitle {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 1.08rem;
+  max-width: 56ch;
 }
 
-.subtext {
+.ctaRow {
   margin-top: 1.5rem;
-  font-size: 1.2rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.primaryBtn,
+.secondaryBtn {
+  border-radius: 10px;
+  padding: 0.68rem 1rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+}
+
+.primaryBtn {
+  background: linear-gradient(120deg, var(--accent), var(--strong));
+  color: #05101d;
+  border: none;
+}
+
+.secondaryBtn {
+  background: var(--surface-soft);
   color: var(--primary);
 }
 
-.ctaButton {
-  display: inline-block;
-  margin-top: 2rem;
-  padding: 0.75rem 1.5rem;
-  background-color: var(--accent);
-  color: white;
-  font-weight: 600;
-  border: none;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
+.statusCard {
+  background: linear-gradient(170deg, var(--surface-soft), var(--surface));
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem;
 }
 
-.ctaButton:hover {
-  background-color: var(--strong);
-  color: white;
+.statusCard h3 {
+  margin: 0 0 0.6rem;
+}
+
+.statusCard ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.stats {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.stats > div {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem;
+}
+
+.stats strong {
+  display: block;
+  font-size: 1.12rem;
+}
+
+.stats span {
+  color: var(--muted);
+  font-size: 0.83rem;
+}
+
+.grid {
+  margin-top: 1.4rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.cardLabel {
+  margin: 0;
+  font-size: 0.74rem;
+  color: var(--accent);
+  font-family: "IBM Plex Mono", "Fira Code", monospace;
+}
+
+.card h3 {
+  margin: 0.45rem 0;
+  font-size: 1.05rem;
+}
+
+.cardContext {
+  margin: 0 0 0.55rem;
+  color: var(--accent);
+  font-size: 0.83rem;
+  font-family: var(--font-dev);
+}
+
+.card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.tagWrap {
+  margin-top: 0.9rem;
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  color: var(--primary);
+  border-radius: 999px;
+  font-family: "IBM Plex Mono", "Fira Code", monospace;
+  font-size: 0.73rem;
+  padding: 0.25rem 0.55rem;
+}
+
+.cardLink {
+  display: inline-block;
+  margin-top: 0.85rem;
+  color: var(--accent);
+  font-weight: 600;
+  font-family: var(--font-dev);
+  font-size: 0.82rem;
+}
+
+@media (max-width: 992px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
